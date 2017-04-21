@@ -1,0 +1,39 @@
+<form>
+	<div class="row p-3">
+		<div class="col-md-7">
+			<input ng-model="cityName" type="text" class="form-control" placeholder="Enter City">
+		</div>
+		<div class="col-md-3">
+			<button type="submit" ng-click="addCity(cityName); cityName = ''" class="btn btn-primary">Add</button>
+		</div>
+		<div class="col-md-2">
+			<button type="button" class="btn btn-warning">Update</button>
+		</div>
+	</div>
+</form>
+
+<div class="row p-3">
+	<div class="col-md-4">
+		<h4>City Name</h4>
+	</div>
+	<div class="col-md-3">
+		<h4></h4>
+	</div>
+	<div class="col-md-3">
+	</div>
+</div>
+
+<div class="row p-3" ng-repeat="city in allCities">
+	<div class="col-md-4">
+		<p class="m-0">{{city.cityName}}</p>
+	</div>
+	<div class="col-md-3">
+		<p class="m-0"></p>
+	</div>
+	<div class="col-md-3">
+		<button type="button" class="btn btn-primary">Edit</button>
+	</div>
+	<div class="col-md-2">
+		<button type="button" class="btn btn-danger" ng-click="deleteCity(city, $index)">Delete</button>
+	</div>
+</div>

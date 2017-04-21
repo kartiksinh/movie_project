@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Movie Booking</title>
+    <!-- load bootstrap and fontawesome via CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="./css/app.css" />
+</head>
+
+<body ng-app="movieApp" ng-controller="AppController">
+    <header>
+      <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <a class="navbar-brand" href="#"></a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" ui-sref="home"><i class="fa fa-home"></i> Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" ui-sref="admin.uploadMovie"><i class="fa fa-user"></i> Admin</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" ui-sref="booking"><i class="fa fa-shield"></i> Booking</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" ui-sref="cancellation"><i class="fa fa-times"></i> Cancellation</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div ui-view></div>
+    <script type="text/javascript" src="/build/bundle.js"></script>
+</body>
+
+</html>

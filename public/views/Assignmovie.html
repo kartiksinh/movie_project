@@ -1,0 +1,23 @@
+<form class="form-inline p-3" ng-submit="submitShow(show)">
+
+  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" ng-model="show.movie">
+		<option ng-selected="$index === 1" ng-repeat="movie in allMovies" ng-value="movie">{{movie.Title}}</option>
+	</select>
+
+	<select class="custom-select mb-2 mr-sm-2 mb-sm-0" ng-model="show.city">
+		<option ng-selected="$index === 1" ng-repeat="city in allCities" ng-value="city">{{city.cityName}}</option>
+	</select>
+
+	<select class="custom-select mb-2 mr-sm-2 mb-sm-0" ng-model="show.theatre">
+		<option ng-selected="$index === 1" ng-repeat="theatre in allTheatres" ng-value="theatre">{{theatre.theatreName}}</option>
+	</select>
+
+	<select ng-show="show.theatre" class="custom-select mb-2 mr-sm-2 mb-sm-0" ng-model="show.time">
+		<option ng-selected="$index === 1" ng-repeat="timing in show.theatre.theatreTimings" ng-value="timing">{{timing}}</option>
+	</select>
+
+	<input class="form-control mr-1" ng-model="show.startDate" type="date">
+	<input class="form-control mr-1" ng-model="show.endDate" type="date">
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,39 @@
+<form>
+	<div class="row p-3">
+		<div class="col-md-7">
+			<input ng-model="movieName" type="text" class="form-control" placeholder="Enter Movie">
+		</div>
+		<div class="col-md-3">
+			<button type="submit" ng-click="addMovie(movieName); movieName = ''" class="btn btn-primary">Add</button>
+		</div>
+		<div class="col-md-2">
+			<button type="button" class="btn btn-warning">Update</button>
+		</div>
+	</div>
+</form>
+
+<div class="row p-3">
+	<div class="col-md-4">
+		<h4>Movie Name</h4>
+	</div>
+	<div class="col-md-3">
+		<h4>Director</h4>
+	</div>
+	<div class="col-md-3">
+	</div>
+</div>
+
+<div class="row p-3" ng-repeat="movie in allMovies">
+	<div class="col-md-4">
+		<p class="m-0">{{movie.Title}}</p>
+	</div>
+	<div class="col-md-3">
+		<p class="m-0">{{movie.Director}}</p>
+	</div>
+	<div class="col-md-3">
+		<button type="button" class="btn btn-primary">Edit</button>
+	</div>
+	<div class="col-md-2">
+		<button type="button" class="btn btn-danger" ng-click="deleteMovie(movie, $index)">Delete</button>
+	</div>
+</div>
