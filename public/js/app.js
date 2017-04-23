@@ -50,16 +50,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('admin.assignmovie', {
       url: "/assign-movie",
       templateUrl: "views/assignMovie.html",
-      controller: function($scope){
-        if($scope.allMovies && $scope.allCities && $scope.allTheatres){
-          $scope.show = {
-            movie: $scope.allMovies[0],
-            city: $scope.allCities[0],
-            theatre: $scope.allTheatres[0],
-            time: $scope.allTheatres[0].theatreTimings[0],
-          }
-        }
-      }
+      controller: "AssignShowController"
     })
     .state('cancellation', {
       url: "/cancellation",

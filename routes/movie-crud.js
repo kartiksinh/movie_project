@@ -15,7 +15,9 @@ mongoose.connect(dbHost);
 
 var movieSchema = mongoose.Schema({
   movieID: String,
-  movieName: String
+  movieName: String,
+  movieDirector: String,
+  moviePoster: String
  });
 var Movie = mongoose.model('Movie', movieSchema, 'movie');
 
@@ -47,9 +49,13 @@ router.post('/movie', function(req, res){
   console.log(req.body);
   var id = req.body.movieID;
   var name = req.body.movieName;
+  var poster = req.body.moviePoster;
+  var director = req.body.movieDirector;
   var movie = new Movie({
     movieID : id,
-    movieName:name   
+    movieName:name,
+    movieDirector: director,
+    moviePoster: poster
   });
 
   movie.save(function(err, docs){

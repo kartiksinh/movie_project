@@ -6,57 +6,38 @@ module.exports = function($scope, $http, adminService) {
 	$scope.allCities = [];
 
 	$scope.movieName = '';
-	!function(){
 
-		// Get Movie Details from DB
-		adminService.getMovieDetails()
+	// Get Movie Details from DB
+	adminService.getMovieDetails()
+	.then(function(res){
+		if(res.status === 200){
+			$scope.allMovies = res.data;
+		}
+	});
+
+	// Get City Details from DB
+	adminService.getCityDetails()
 		.then(function(res){
 			if(res.status === 200){
-				angular.forEach(res.data, function(val, key){
-					var movie = {}
-					adminService.getOmdbApi(val.movieName)
-						.then(function(response){
-							if(response.status === 200){
-								movie['id'] = val._id;
-								movie['Title'] = response.data.Title;
-								movie['Director'] = response.data.Director;
-								$scope.allMovies.push(movie);
-							}
-					});
-				});
+				$scope.allCities = res.data;
 			}
 		});
 
-		// Get City Details from DB
-		adminService.getCityDetails()
-			.then(function(res){
-				if(res.status === 200){
-					angular.forEach(res.data, function(val, key){
-						var city = {};
-						city['id'] = val._id;
-						city['cityName'] = val.cityName;
-						$scope.allCities.push(city);
-					})
-				}
-			});
+	// Get Theatre Details from DB
+	adminService.getTheatreDetails()
+		.then(function(res){
+			if(res.status === 200){
+				$scope.allTheatres = res.data;
+			}
+		});
 
-		// Get Theatre Details from DB
-		adminService.getTheatreDetails()
-			.then(function(res){
-				if(res.status === 200){
-					$scope.allTheatres = res.data;
-				}
-			});
-
-		// Get Timing Details from DB
-		adminService.getTimingDetails()
-			.then(function(res){
-				if(res.status === 200){
-					$scope.allTimings = res.data;
-				}
-			});
-
-	}();
+	// Get Timing Details from DB
+	adminService.getTimingDetails()
+		.then(function(res){
+			if(res.status === 200){
+				$scope.allTimings = res.data;
+			}
+		});
 
 	// Movie Functions
   $scope.addMovie = function(movie){
@@ -65,12 +46,9 @@ module.exports = function($scope, $http, adminService) {
 	  	.then(function(response){
 	  		if(response.status === 200){
 					var movie = {};
-					adminService.insertMovieDetails(response.data.Title)
+					adminService.insertMovieDetails(response.data)
 						.then(function(res){
-							movie['id'] = res.data._id;
-							movie['Title'] = response.data.Title;
-							movie['Director'] = response.data.Director;
-							$scope.allMovies.push(movie);
+							$scope.allMovies.push(res.data);
 						}, function(err){
 							console.log(err);
 						})
@@ -149,16 +127,22 @@ module.exports = function($scope, $http, adminService) {
   }
 
   // assign Timing methods
-  $scope.assignTiming = function(details){
-  	details.theatreDetails.theatreTimings.push(details.timing);
-  	console.log(details.theatreDetails);
-  	$http.put(`http://localhost:8000/theatre/theatre/${details.theatreDetails._id}`, details.theatreDetails)
-  		.then(function(response){
-		    console.log("response", response);
-  		})
+  $scope.assignTiming = function(details, timing){
+  	if(details.theatreDetails.theatreTimings.indexOf(timing) == -1){
+	  	details.theatreDetails.theatreTimings.push(timing);
+	  	$http.put(`http://localhost:8000/theatre/theatre/${details.theatreDetails._id}`, details.theatreDetails)
+	  		.then(function(response){
+			    console.log("response", response);
+	  		})
+  	} else {
+  		alert('Selected timing already assigned');
+  	}
   }
 
   $scope.submitShow = function(show){
+    var parsedDate =  Date.parse(show.startDate.toISOString());
+    var newDate = new Date(parsedDate);
+    console.log(newDate);
   	$scope.allShows.push(show);
   	console.log($scope.allShows);
   }

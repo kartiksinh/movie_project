@@ -1,9 +1,9 @@
 <form class="form-inline p-3">
 
   <select class="form-control" ng-model="theatre.theatreDetails" ng-options="theatre as theatre.theatreName for theatre in allTheatres"></select>
-  <select class="form-control ml-3" ng-model="theatre.timing" ng-options="timing.timingName as timing.timingName for timing in allTimings"></select>
+  <select class="form-control ml-3" ng-model="timing" ng-options="timing.timingName as timing.timingName for timing in allTimings"></select>
 
-  <button type="submit" class="btn btn-primary ml-2" ng-click="assignTiming(theatre)">Add</button>
+  <button type="submit" class="btn btn-primary ml-2" ng-click="assignTiming(theatre, timing)">Add</button>
   <button type="button" class="btn btn-warning ml-2">Update</button>
 
 </form>

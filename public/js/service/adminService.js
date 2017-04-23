@@ -11,9 +11,12 @@ module.exports = function($http) {
 		return $http.get('http://localhost:8000/movie/movie');
 	}
 
-	this.insertMovieDetails = function(movieName){
+	this.insertMovieDetails = function(movie){
+		console.log("movie", movie);
 		var data = {
-			"movieName": movieName
+		  movieName: movie.Title,
+			movieDirector: movie.Director,
+			moviePoster: movie.Poster
 		};
 		return $http.post('http://localhost:8000/movie/movie', data);
 	}
