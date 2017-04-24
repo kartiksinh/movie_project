@@ -50,4 +50,13 @@ module.exports = function($http) {
 	this.insertTimingDetails = function(timing){
 		return $http.post('http://localhost:8000/timing/timing', timing);
 	}
+
+	// Show Services
+	this.getShowDetails = function(){
+		return $http.get('http://localhost:8000/show/show');
+	}
+
+	this.insertShowDetails = function(show){
+		return $http.post('http://localhost:8000/show/show', show);
+	}
 };

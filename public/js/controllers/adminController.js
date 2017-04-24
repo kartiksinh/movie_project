@@ -39,6 +39,14 @@ module.exports = function($scope, $http, adminService) {
 			}
 		});
 
+  // Get Show Details from DB
+  adminService.getShowDetails()
+    .then(function(res){
+      if(res.status === 200){
+        $scope.allShows = res.data;
+      }
+    });
+
 	// Movie Functions
   $scope.addMovie = function(movie){
   	if(movie && movie.length > 0){
@@ -139,12 +147,24 @@ module.exports = function($scope, $http, adminService) {
   	}
   }
 
-  $scope.submitShow = function(show){
-    var parsedDate =  Date.parse(show.startDate.toISOString());
-    var newDate = new Date(parsedDate);
-    console.log(newDate);
-  	$scope.allShows.push(show);
-  	console.log($scope.allShows);
+  //Show Methods
+  $scope.addShow = function(show){
+    show.startDate =  Date.parse(show.startDate.toISOString());
+    show.startDate = new Date(show.startDate);
+    show.endDate =  Date.parse(show.endDate.toISOString());
+    show.endDate = new Date(show.endDate);
+    adminService.insertShowDetails(show).then(function(response) {
+      $scope.allShows.push(show);
+    });
+  }
+
+  $scope.deleteShow = function(show, index){
+    $http.delete(`http://localhost:8000/show/show/${show._id}`)
+      .then(function(response){
+        if(response.status === 200){
+          $scope.allShows.splice(index, 1);
+        }
+      });
   }
 
 };
