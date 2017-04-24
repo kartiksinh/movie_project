@@ -35,7 +35,7 @@ router.get('/show/:id', function (req, res) {
 });
 
 router.post('/show', function(req, res){
-  console.log(req.body);
+  console.log('req.body', req.body);
   var id = req.body.showID;
   var movie = req.body.movie;
   var city = req.body.city;
