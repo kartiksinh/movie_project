@@ -4,9 +4,9 @@ module.exports = function($scope, $http) {
   $scope.booking = 'booking';
 
   var refresh = function () {
-        $http.get('/movie/movie').success(function (response) {
+        $http.get('/movie/movie').then(function (response) {
             console.log('READ IS SUCCESSFUL');
-            $scope.contactlist = response;
+            $scope.contactlist = response.data;
             $scope.contact = "";
         });
     };
@@ -15,7 +15,7 @@ module.exports = function($scope, $http) {
 
     $scope.addMovie = function () {
         console.log($scope.contact);
-        $http.post('/movie/movie', $scope.contact).success(function (response) {
+        $http.post('/movie/movie', $scope.contact).then(function (response) {
             console.log(response);
             console.log("CREATE IS SUCCESSFUL");
             refresh();
@@ -24,7 +24,7 @@ module.exports = function($scope, $http) {
 
     $scope.removeMovie = function (id) {
         console.log(id);
-        $http.delete('/movie/movie/' + id._id).success(function (response) {
+        $http.delete('/movie/movie/' + id._id).then(function (response) {
             console.log(response);
             console.log('DELETED SUCCESSFULLY');
             refresh();
@@ -32,7 +32,7 @@ module.exports = function($scope, $http) {
     };
 
     $scope.editMovie = function (id) {
-         $http.get('/movie/movie/' + id._id).success(function (response) {
+         $http.get('/movie/movie/' + id._id).then(function (response) {
             $scope.contact = response[0];
         });
     };
@@ -40,7 +40,7 @@ module.exports = function($scope, $http) {
     $scope.updateMovie = function () {
         console.log("REACHED UPDATE");
         console.log($scope.contact._id);
-        $http.put('/movie/movie/' + $scope.contact._id, $scope.contact).success(function (response) {
+        $http.put('/movie/movie/' + $scope.contact._id, $scope.contact).then(function (response) {
             console.log(response);
             refresh();
         })
