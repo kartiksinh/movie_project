@@ -15,7 +15,16 @@ var showSchema = mongoose.Schema({
   theatre: Object,
   time: String,
   startDate: Date,
-  endDate: Date
+  endDate: Date,
+  availableSeats: Number,
+  bookedSeats: Number,
+  bookings: [
+    {
+      name: String,
+      email: String,
+      seats: Number
+    }
+  ],
 });
 
 var Show = mongoose.model('Show', showSchema, 'show');
@@ -43,6 +52,8 @@ router.post('/show', function(req, res){
   var time = req.body.time;
   var startDate = req.body.startDate;
   var endDate = req.body.endDate;
+  var availableSeats = req.body.theatre.theatreSeats;
+  var bookedSeats = 0;
   var show = new Show({
     showID : id,
     movie: movie,
@@ -50,7 +61,10 @@ router.post('/show', function(req, res){
     theatre: theatre,
     time: time,
     startDate: startDate,
-    endDate: endDate 
+    endDate: endDate,
+    availableSeats: availableSeats,
+    bookedSeats: bookedSeats,
+    bookings: []
   });
 
   show.save(function(err, docs){
@@ -71,6 +85,12 @@ router.put('/show/:id', function(req, res){
     console.log("REACHED PUT");
     console.log(req.body);
     Show.findOneAndUpdate({_id:req.params.id}, req.body, function (err, data) {
+      res.json(data);
+    });
+});
+
+router.put('/booking/:id', function(req, res){
+  Show.findOneAndUpdate({_id:req.params.id}, {$push: { bookings: req.body }}, {new: true}, function (err, data) {
       res.json(data);
     });
 })

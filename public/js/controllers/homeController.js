@@ -1,15 +1,10 @@
 'use strict';
 
-module.exports = function($scope, TodoService) {
-    $scope.home = 'home';
-    var self = this;
-
-    self.firstName = '';
-    self.lastName = '';
-
-    self.getFullName = function() {
-        return self.firstName + ' ' + self.lastName;
-    };
-
-    return self;
+module.exports = function($scope, HomeService, $http) {
+	$http.get('http://localhost:8000/show/show')
+	.then(function(response){
+		if(response.status === 200){
+			$scope.allShows = response.data;
+		}
+	})
 };
