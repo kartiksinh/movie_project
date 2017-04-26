@@ -1,33 +1,33 @@
 <table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <input ng-model="contact.movieID" />
-            </td>
-            <td>
-                <input ng-model="contact.movieName" />
-            </td>
-            <td>
-                <button ng-click="addMovie()" class="btn btn-primary">Add Movie</button>
-            </td>
-            <td>
-                <button ng-click="updateMovie()" class="btn btn-primary">Update</button>
-            </td>
-        </tr>
-        <tr ng-repeat=" contact in contactlist">
-            <td>{{contact.movieName}}</td>
-            <td>
-                <button ng-click="removeMovie(contact)" class="btn btn-danger">Remove</button>
-            </td>
-            <td>
-                <button ng-click="editMovie(contact)" class="btn btn-primary">Edit</button>
-            </td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <input ng-model="contact.movieID" />
+      </td>
+      <td>
+        <input ng-model="contact.movieName" />
+      </td>
+      <td>
+        <button ng-click="addMovie()" class="btn btn-primary">Add Movie</button>
+      </td>
+      <td>
+        <button ng-click="updateMovie()" class="btn btn-primary">Update</button>
+      </td>
+    </tr>
+    <tr ng-repeat=" contact in contactlist">
+        <td>{{contact.movieName}}</td>
+        <td>
+          <button ng-click="removeMovie(contact)" class="btn btn-danger">Remove</button>
+        </td>
+        <td>
+          <button ng-click="editMovie(contact)" class="btn btn-primary">Edit</button>
+        </td>
+    </tr>
+  </tbody>
 </table>

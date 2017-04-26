@@ -1,14 +1,17 @@
 <div class="container">
 	<div class="row p-3">
 		<div ng-repeat="show in allShows" class="col-md-3 p-2">
-			<div class="card text-center">
+			<div class="card">
 				<div style="max-height: 250px; overflow: hidden;">
 				  <img class="img-fluid" ng-src="{{show.movie.moviePoster}}" alt="Card image cap">
 				</div>
 			  <div class="card-block">
-			    <h5 class="card-title">{{show.movie.movieName}}</h5>
-			    <p class="card-text"><small class="text-muted">{{show.movie.movieDirector}}</small></p>
-			    <a href="#" class="btn btn-outline-primary btn-sm">Book</a>
+			    <h5 class="card-title mb-0">{{show.movie.movieName}}</h5>
+			    <p class="card-text"><small class="text-muted">Directed By - {{show.movie.movieDirector}}</small></p>
+			    <p class="card-text text-muted">{{show.theatre.theatreName}}, {{show.theatre.theatreCity}}</p>
+			    <p class="card-text text-muted mb-0">Date - {{show.showDate}}</p>
+			    <p class="card-text text-muted">Time - {{show.time}}</p>
+			    <a href="#" class="btn btn-outline-primary btn-sm btn-block">Book</a>
 			  </div>
 			</div>
 		</div>

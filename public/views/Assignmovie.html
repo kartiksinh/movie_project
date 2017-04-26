@@ -16,8 +16,7 @@
 		<option ng-repeat="timing in show.theatre.theatreTimings" ng-value="timing">{{timing}}</option>
 	</select>
 
-	<input ng-if="show.time" class="form-control mr-1" ng-model="show.startDate" type="date">
-	<input ng-if="show.time" class="form-control mr-1" ng-model="show.endDate" type="date">
+	<input ng-if="show.time" class="form-control mr-1" ng-model="show.showDate" type="date">
 
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

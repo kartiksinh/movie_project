@@ -149,10 +149,8 @@ module.exports = function($scope, $http, adminService) {
 
   //Show Methods
   $scope.addShow = function(show){
-    show.startDate =  Date.parse(show.startDate.toISOString());
-    show.startDate = new Date(show.startDate);
-    show.endDate =  Date.parse(show.endDate.toISOString());
-    show.endDate = new Date(show.endDate);
+    show.showDate =  Date.parse(show.showDate.toISOString());
+    show.showDate = new Date(show.showDate);
     adminService.insertShowDetails(show).then(function(response) {
       $scope.allShows.push(show);
     });
