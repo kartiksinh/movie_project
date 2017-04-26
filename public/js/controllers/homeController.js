@@ -5,6 +5,9 @@ module.exports = function($scope, HomeService, $http) {
 	.then(function(response){
 		if(response.status === 200){
 			$scope.allShows = response.data;
+			angular.forEach($scope.allShows, function(val, key){
+				val.showDate = new Date(val.showDate).toDateString();
+			})
 		}
 	})
 };

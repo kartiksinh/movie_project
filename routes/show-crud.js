@@ -14,15 +14,16 @@ var showSchema = mongoose.Schema({
   city: Object,
   theatre: Object,
   time: String,
-  startDate: Date,
-  endDate: Date,
+  showDate: Date,
   availableSeats: Number,
   bookedSeats: Number,
   bookings: [
     {
       name: String,
       email: String,
-      seats: Number
+      seats: Number,
+      bookingDate: Date,
+      bookingTime: String,
     }
   ],
 });
@@ -50,8 +51,7 @@ router.post('/show', function(req, res){
   var city = req.body.city;
   var theatre = req.body.theatre;
   var time = req.body.time;
-  var startDate = req.body.startDate;
-  var endDate = req.body.endDate;
+  var showDate = req.body.showDate;
   var availableSeats = req.body.theatre.theatreSeats;
   var bookedSeats = 0;
   var show = new Show({
@@ -60,8 +60,7 @@ router.post('/show', function(req, res){
     city: city,
     theatre: theatre,
     time: time,
-    startDate: startDate,
-    endDate: endDate,
+    showDate: showDate,
     availableSeats: availableSeats,
     bookedSeats: bookedSeats,
     bookings: []
