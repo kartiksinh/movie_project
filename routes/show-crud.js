@@ -22,8 +22,6 @@ var showSchema = mongoose.Schema({
       name: String,
       email: String,
       seats: Number,
-      bookingDate: Date,
-      bookingTime: String,
     }
   ],
 });
@@ -89,7 +87,11 @@ router.put('/show/:id', function(req, res){
 });
 
 router.put('/booking/:id', function(req, res){
-  Show.findOneAndUpdate({_id:req.params.id}, {$push: { bookings: req.body }}, {new: true}, function (err, data) {
+  Show.findOneAndUpdate({_id:req.params.id}, {
+    $push: { bookings: req.body},
+    $inc: { "availableSeats": -(req.body.seats)},
+    $inc: { "bookedSeats": (req.body.seats)},
+  }, {new: true}, function (err, data) {
       res.json(data);
     });
 })
