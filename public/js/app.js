@@ -41,7 +41,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('admin.showtimings', {
       url: "/timings",
-      templateUrl: "views/showtimings.html",
+      templateUrl: "views/showTimings.html",
     })
     .state('admin.assigntimings', {
       url: "/assign-timings",
@@ -49,7 +49,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('admin.assignmovie', {
       url: "/assign-movie",
-      templateUrl: "views/assignMovie.html",
+      templateUrl: "views/Assignmovie.html",
       controller: "AssignShowController"
     })
     .state('cancellation', {
