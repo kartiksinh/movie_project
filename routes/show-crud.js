@@ -87,10 +87,9 @@ router.put('/show/:id', function(req, res){
 });
 
 router.put('/booking/:id', function(req, res){
-  Show.findOneAndUpdate({_id:req.params.id}, {
+  Show.findByIdAndUpdate(req.params.id, {
     $push: { bookings: req.body},
-    $inc: { "availableSeats": -(req.body.seats)},
-    $inc: { "bookedSeats": (req.body.seats)},
+    $inc: { "availableSeats": -(req.body.seats), "bookedSeats": (req.body.seats)}
   }, {new: true}, function (err, data) {
       res.json(data);
     });

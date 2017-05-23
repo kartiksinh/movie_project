@@ -61,4 +61,8 @@ module.exports = function($http) {
 	this.insertShowDetails = function(show){
 		return $http.post('http://localhost:8000/show/show', show);
 	}
+
+	this.bookShow = function(id, booking){
+		return $http.put('http://localhost:8000/show/booking/'+id, booking);
+	}
 };
