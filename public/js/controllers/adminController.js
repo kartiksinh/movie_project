@@ -52,6 +52,7 @@ module.exports = function($scope, $http, adminService) {
   	if(movie && movie.length > 0){
 	  	adminService.getOmdbApi(movie)
 	  	.then(function(response){
+        // console.log('response', response);
 	  		if(response.status === 200){
 					var movie = {};
 					adminService.insertMovieDetails(response.data)
@@ -153,6 +154,13 @@ module.exports = function($scope, $http, adminService) {
     show.showDate = new Date(show.showDate);
     adminService.insertShowDetails(show).then(function(response) {
       $scope.allShows.push(show);
+      show = {
+        movie: null,
+        city: null,
+        theatre: null,
+        time: null,
+        showDate: null
+      };
     });
   }
 
