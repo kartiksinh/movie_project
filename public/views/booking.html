@@ -1,33 +1,29 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <input ng-model="contact.movieID" />
-      </td>
-      <td>
-        <input ng-model="contact.movieName" />
-      </td>
-      <td>
-        <button ng-click="addMovie()" class="btn btn-primary">Add Movie</button>
-      </td>
-      <td>
-        <button ng-click="updateMovie()" class="btn btn-primary">Update</button>
-      </td>
-    </tr>
-    <tr ng-repeat=" contact in contactlist">
-        <td>{{contact.movieName}}</td>
-        <td>
-          <button ng-click="removeMovie(contact)" class="btn btn-danger">Remove</button>
-        </td>
-        <td>
-          <button ng-click="editMovie(contact)" class="btn btn-primary">Edit</button>
-        </td>
-    </tr>
-  </tbody>
-</table>
+<div class="container py-3">
+  <div class="row" style="border-bottom: 1px solid #eee; font-weight: bold;">
+    <div class="col-md-2">Movie Name</div>
+    <div class="col-md-2">Theatre</div>
+    <div class="col-md-2">City</div>
+    <div class="col-md-2">Date</div>
+    <div class="col-md-1">Time</div>
+    <div class="col-md-2">Available Seats</div>
+    <div class="col-md-1">Booked Seats</div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" style="border-bottom: 1px solid #eee; padding-bottom: 10px ">
+      <div class="row py-2">
+        <div class="col-md-2">Iron Man</div>
+        <div class="col-md-2">PVR</div>
+        <div class="col-md-2">Chennai</div>
+        <div class="col-md-2">26/05/17</div>
+        <div class="col-md-1">3PM</div>
+        <div class="col-md-2">25</div>
+        <div class="col-md-1">475</div>
+      </div>
+      <div class="row text-center py-2" style="border-top: 1px dashed #aaa; width: 60%; margin: 0 auto;">
+        <div class="col-sm-4">Kartik</div>
+        <div class="col-sm-4">Kartik@gmail.com</div>
+        <div class="col-sm-4">5</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -19,6 +19,7 @@ module.exports = function($scope, HomeService, $http, adminService) {
 	$scope.bookShow = function(booking) {
 		adminService.bookShow($scope.selectedShow._id, booking)
 			.then(function(res){
+				console.log("res", res);
 				$('#myModal').modal('hide');
 				if(res.status == 200){
 					$scope.booking.name = null;
