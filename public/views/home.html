@@ -10,10 +10,45 @@
 			    <!-- <p class="card-text"><small class="text-muted">Directed By - {{show.movie.movieDirector}}</small></p> -->
 			    <p class="card-text text-muted">{{show.theatre.theatreName}}, {{show.theatre.theatreCity}}</p>
 			    <p class="card-text text-muted mb-0">Date - {{show.showDate}}</p>
-			    <p class="card-text text-muted">Time - {{show.time}}</p>
-			    <a href="#" class="btn btn-outline-primary btn-sm btn-block">Book</a>
+			    <p class="card-text text-muted">Time - {{show.time}} P.M.</p>
+			    <p class="card-text text-muted">Seats - {{show.availableSeats}}</p>
+			    <p class="card-text text-muted">Price - <i class="fa fa-inr"></i> {{show.theatre.theatrePrice}}</p>
+			    <a href="#" class="btn btn-outline-primary btn-sm btn-block" ng-click="showBookingModal()">Book</a>
 			  </div>
 			</div>
 		</div>
 	</div>
+</div>
+
+<div id="myModal" class="modal fade show">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Please fill the details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<form>
+				  <div class="form-group">
+				    <label for="customerName">Name</label>
+				    <input type="text" class="form-control" id="customerName" placeholder="Your Name">
+				  </div>
+				  <div class="form-group">
+				    <label for="customerEmail">Email</label>
+				    <input type="email" class="form-control" id="customerEmail" placeholder="Your Email">
+				  </div>
+				  <div class="form-group">
+				    <label for="seats">Seats</label>
+				    <input type="number" class="form-control" id="seats" placeholder="Number of Seats">
+				  </div>
+				</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Confirm Booking</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
